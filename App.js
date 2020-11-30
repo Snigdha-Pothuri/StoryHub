@@ -11,11 +11,25 @@ export default function App() {
     <View style={styles.container}>
      <WriteStory/> 
      <ReadStory/>
-     <Text>Hi!! This Is The First Look Of This Amazing StoryHub App</Text>
+     <Text> Storyhub App </Text>
     </View>
   );
  
 }
+
+const TabNavigator = createBottomTabNavigator({
+  ReadStory: { screen: ReadStory },
+  WriteStory: { screen: WriteStory }
+},
+{defaultNavigationOptions:
+({navigation})=>({
+  tabBarIcon:()=>{
+    const routeName = navigation.state.routeName 
+  }
+})
+}
+);
+const AppContainer = createAppContainer(TabNavigator);
 
 const styles = StyleSheet.create({
   container: {
