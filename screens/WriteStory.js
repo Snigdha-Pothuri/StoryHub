@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,TextInput, TouchableOpacity} from 'react-native';
 
 export default class WriteStory extends React.Component {
     render() {
@@ -19,7 +19,11 @@ export default class WriteStory extends React.Component {
 <TextInput
           style={styles.writeStory}
           placeholder ={"Write your story"}
-        />
+        /> 
+
+        <TouchableOpacity>
+          <Text> Submit </Text>
+        </TouchableOpacity>
         </View>
       );
     }
