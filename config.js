@@ -8,7 +8,7 @@ var firebaseConfig = {
     storageBucket: "story-hub-d9905.appspot.com",
     messagingSenderId: "940330440336",
     appId: "1:940330440336:web:d22bff356d66030f06ea15"
-};
+  };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
