@@ -12,17 +12,17 @@ export default class WriteStory extends React.Component {
      storytext : ""
    } 
  }
-  submitStory = () => {
-     db.collection("stories").add({
-       "title" : title,
-       "author" : author,
-       "storytext" : storytext
-     }) 
-     this.setState({
-      title : "",
-      author : "",
-      storytext : "" 
-    })
+ submitStory = () => { 
+   db.collection("stories").add({ 
+     "title" : this.state.title,
+      "author" : this.state.author,
+       "storytext" : this.state.storytext
+       }) 
+ this.setState({ 
+   title : "", 
+   author : "",
+    storytext : ""
+   }) 
      return alert("Your Story Is Added :)")
   }
     render() {
@@ -32,7 +32,7 @@ export default class WriteStory extends React.Component {
           <TextInput
           style={styles.formTextInput}
           placeholder ={"Title of your story"}
-          onChangeText={()=>{
+          onChangeText={(text)=>{
             this.setState({
               title : text
             })
@@ -42,7 +42,7 @@ export default class WriteStory extends React.Component {
    <TextInput
           style={styles.formTextInput}
           placeholder ={"Author of the story"} 
-          onChangeText={()=>{
+          onChangeText={(text)=>{
             this.setState({
               author : text
             })
@@ -52,7 +52,7 @@ export default class WriteStory extends React.Component {
 <TextInput
           style={styles.writeStory}
           placeholder ={"Write your story"} 
-          onChangeText={()=>{
+          onChangeText={(text)=>{
             this.setState({
               storytext : text
             })
