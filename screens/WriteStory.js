@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View ,TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View ,TextInput, TouchableOpacity,KeyboardAvoidingView,ToastAndroid} from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -9,9 +9,11 @@ export default class WriteStory extends React.Component {
    this.state = {
      title : "",
      author : "",
-     storytext : ""
+     storytext : "",
+     allStories:[]
    } 
  }
+ 
  submitStory = () => { 
    db.collection("stories").add({ 
      "title" : this.state.title,
@@ -27,9 +29,9 @@ export default class WriteStory extends React.Component {
   }
     render() {
       return (
+        <KeyboardAvoidingView>
         <View style={{flex: 1}}>
-
-          <TextInput
+        <TextInput
           style={styles.formTextInput}
           placeholder ={"Title of your story"}
           onChangeText={(text)=>{
@@ -60,11 +62,12 @@ export default class WriteStory extends React.Component {
         /> 
 
         <TouchableOpacity style={styles.submitButton}
-        onPress={()=>{this.submitStory()}}
+        onPress={()=>{this.submitStory(),alert("Your story is submitted")}}
         >
           <Text style={styles.buttonText}> Submit </Text>
         </TouchableOpacity>
-        </View>
+        </View> 
+        </KeyboardAvoidingView>
       );
     }
   }

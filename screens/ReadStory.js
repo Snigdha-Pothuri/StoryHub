@@ -1,12 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import db from '../config';
 
 export default class ReadStory extends React.Component {
+  constructor(){
+    this.state={
+      allStories:[]
+    }
+  }
+  componentDidMount= async()=>{
+    const query=db.collection("stories").get()
+    query.docs.map((doc)=>{
+       this.setState({
+         allStories:[...this.state.allStories,doc.data()]
+       })
+    })
+   }
     render() {
       return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>Read A Story</Text>
-        </View>
+            <ScrollView>
+              
+            </ScrollView>
       );
     }
   }
